@@ -16,7 +16,7 @@ export class AuthService {
         try {
             const user = await this.prismaService.user.create({
                 data: {
-                    email: dto.email,
+                    email: dto.email + '',
                     hash
                 }
             })
@@ -38,7 +38,7 @@ export class AuthService {
         
         const user = await this.prismaService.user.findUnique({
             where: {
-                email : dto.email
+                email : dto.email + ''
             }
         })
 
