@@ -1,4 +1,4 @@
-import { Controller, Get, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Patch, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { User } from '@prisma/client';
 import { Request } from 'express';
@@ -11,9 +11,14 @@ export class UserController {
 
     
     @Get('me')
-    getMe(@GetUser() user: User) {
+    getMe(@GetUser('id') userId: number, @GetUser('email') email: number) {
 
-        console.log(user)
-        return user
+        console.log(email)
+        return userId
+    }
+
+    @Patch()
+    editUser() {
+
     }
 }

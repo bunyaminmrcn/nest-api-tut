@@ -1,4 +1,4 @@
-import { Body, Controller, ParseIntPipe, Post, Req } from "@nestjs/common";
+import { Body, Controller, ParseIntPipe, Post, Req, HttpCode, HttpStatus } from "@nestjs/common";
 import { AuthService } from "./auth.service";
 import { AuthDto } from "./dto";
 
@@ -22,6 +22,7 @@ export class AuthController {
     //@Body() dto: AuthDto
     //@Body('email') email: string, @Body('password' ,ParseIntPipe) password
 
+    @HttpCode(HttpStatus.OK)
     @Post('signup')
     signup(@Body() dto: AuthDto) {
         //console.log(dto)
